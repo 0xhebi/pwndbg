@@ -79,5 +79,6 @@ def hex2ptr(hex_string: gdb.Value | str) -> int:
     if isinstance(hex_string, gdb.Value):
         hex_string = hex_string.string()
 
-    address = hex2ptr_common(hex_string)
-    return address
+    hex_string = hex_string.replace(" ", "")
+    pointer = hex2ptr_common(hex_string)
+    return pointer

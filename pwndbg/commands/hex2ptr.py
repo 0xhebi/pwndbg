@@ -18,9 +18,9 @@ parser.add_argument(
 
 @pwndbg.commands.ArgparsedCommand(parser, category=CommandCategory.MISC)
 def hex2ptr(hex_string) -> None:
-    combined_args = hex_string.replace(" ", "")
+    hex_string = hex_string.replace(" ", "")
     try:
-        result = hex2ptr_common(combined_args)
-        print(M.success(f"{hex(result)}"))
+        pointer = hex2ptr_common(hex_string)
+        print(M.success(f"{hex(pointer)}"))
     except Exception as e:
         print(M.error(str(e)))
